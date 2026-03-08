@@ -1,0 +1,42 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+
+                  <div class="card-header card-header-info">
+                      <h4 class="card-title ">Tareas registradas por cada Nota</h4>
+                      <p class="card-category"> Lista de tareas procesadas para verifiacion y cumplimiento </p>
+                  </div>
+
+                  <div class="card-body">
+                    <button mat-raised-button type="submit" class="btn btn-danger pull-left" (click)="finalizar()">Finalizar Actividad</button>
+                    <button mat-raised-button type="button" class="btn btn-warning pull-left" (click)="cancelar()">Cancelar</button>
+                    <div class="clearfix"></div>
+
+                    <jqxGrid #myGrid                         
+                        [width]="'100%'"  
+                                           
+                        [theme]="'office'"
+                        [source]="dataAdapter" 
+                        [columns]="columns"                            
+                        [sortable]="true" 
+                        [pageable]="true"
+                        [altrows]="true" 
+                        [filterable]="true"                            
+                        [columnsresize]="true"
+                        [enabletooltips]="true"
+                        [pagermode]="'simple'"
+
+                        [showfilterrow]="true"
+                        [autoheight]="true"
+
+                        >
+                    </jqxGrid>
+
+                   </div>
+              </div>     
+           </div>
+      </div>
+  </div>
+</div>              

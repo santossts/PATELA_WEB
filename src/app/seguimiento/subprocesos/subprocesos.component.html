@@ -1,0 +1,32 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+
+                  <div class="card-header card-header-primary">
+                      <h4 class="card-title ">Registro peticiones </h4>
+                      <p class="card-category"> Solicitur realizada por nota: {{ data.id }} </p>
+                  </div>
+
+                  <div class="card-body">
+                    <form [formGroup]="solicitudForm" (ngSubmit)="guardar()">
+                        <div class="row">   
+                            <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                    <textarea matInput placeholder="Organización o entidad"  formControlName="organizacion"  (input)="convertToUpperCase($event)" maxlength="120" matLine="3">
+                                    </textarea>    
+                                 </mat-form-field>
+                                 <mat-error *ngIf="submitted && solicitudForm.get('organizacion')?.hasError('required')"> La organización es obligatoria </mat-error>
+                            </div>                            
+                        </div>
+                        <button mat-raised-button color="primary" type="submit">Guardar</button>
+                        <button mat-raised-button color="warn" type="button" (click)="cancelar()">Cancelar</button>
+                    </form>
+
+                  </div>
+                </div>  
+           </div>
+        </div>
+    </div>
+</div>                

@@ -1,0 +1,79 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+
+                  <div class="card-header card-header-warning">
+                      <h4 class="card-title ">Registro Solicitud</h4>
+                      <p class="card-category"> Información tramites legislativos</p>
+                  </div>
+
+                  <div class="card-body">
+                      <form [formGroup]="solicitudForm" (ngSubmit)="guardar()">
+                        <div class="row">   
+                            <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Organización o entidad"  formControlName="organizacion"  (input)="convertToUpperCase($event)" maxlength="120">
+                                 </mat-form-field>
+                                 <mat-error *ngIf="submitted && solicitudForm.get('organizacion')?.hasError('required')"> La organización es obligatoria </mat-error>
+                            </div>                            
+                        </div>
+                        <div class="row">  
+                            <div class="col-md-12">   
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Remitente" formControlName="remitente" (input)="convertToUpperCase($event)" maxlength="100">
+                            </mat-form-field>
+                            <mat-error *ngIf="submitted && solicitudForm.get('remitente')?.hasError('required')"> el campo es obligatoria </mat-error>
+                            </div>                            
+                        </div>
+                        <div class="row">  
+                            <div class="col-md-4">   
+                            <mat-form-field class="example-full-width">
+                                <!--input matInput placeholder="Departamento"-->
+                                <mat-label>Departamento</mat-label> 
+                                <mat-select [(value)]="departamentoSeleccionado"  formControlName="departamento">
+                                    <mat-option *ngFor="let dep of departamentos" [value]="dep"> {{ dep }} </mat-option> 
+                                </mat-select>
+                            </mat-form-field>
+                            </div>
+                            <div class="col-md-5">   
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Sector o Localidad" formControlName="sector" (input)="convertToUpperCase($event)" maxlength="80">                                
+                                </mat-form-field>
+                                <mat-error *ngIf="submitted && solicitudForm.get('sector')?.hasError('required')"> el campo es obligatoria </mat-error>
+                            </div>
+                            <div class="col-md-3">   
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Fecha de nota" type="date" formControlName="fechaNota">
+                            </mat-form-field>
+                            <mat-error *ngIf="submitted && solicitudForm.get('date')?.hasError('required')"> el campo es obligatoria </mat-error>
+                            </div>
+                        </div>
+                        <div class="row">  
+                            <div class="col-md-12">   
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Cite Nota" formControlName="citeNota" (input)="convertToUpperCase($event)" maxlength="100">
+                            </mat-form-field>                            
+                            </div>
+                            <mat-error *ngIf="submitted && solicitudForm.get('citeNota')?.hasError('required')"> el campo es obligatoria </mat-error>
+                        </div> 
+                         <div class="row">  
+                            <div class="col-md-12">   
+                            <mat-form-field class="example-full-width">
+                                <textarea matInput placeholder="Referencia Nota" formControlName="referenciaNota" (input)="convertToUpperCase($event)" maxlength="250" mat-line="2"></textarea>
+                            </mat-form-field>                            
+                            </div>
+                            <mat-error *ngIf="submitted && solicitudForm.get('referenciaNota')?.hasError('required')"> el campo es obligatoria </mat-error>
+                        </div> 
+                        
+                        <button mat-raised-button color="primary" type="submit">Guardar</button>
+                        <button mat-raised-button color="warn" type="button" (click)="cancelar()">Cancelar</button>
+                      </form>
+                  </div>    
+
+               </div>
+          </div>
+      </div>
+  </div>
+</div>            

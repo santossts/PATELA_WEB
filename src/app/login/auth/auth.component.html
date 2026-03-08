@@ -1,0 +1,67 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <h2>Bienvenido</h2>
+      <p class="subtitle">Inicia sesión para continuar</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="form-group">
+        <label>
+          <i class="fas fa-user"></i>
+          Usuario
+        </label>
+        <input 
+          type="text"
+          formControlName="username"
+          placeholder="Ingrese su usuario"
+          [class.error]="username?.invalid && username?.touched"
+        >
+        <div class="error-message" *ngIf="username?.invalid && username?.touched">
+          <span *ngIf="username?.errors?.['required']">El usuario es requerido</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <i class="fas fa-lock"></i>
+          Contraseña
+        </label>
+        <input 
+          type="password"
+          formControlName="password"
+          placeholder="Ingrese su contraseña"
+          [class.error]="password?.invalid && password?.touched"
+        >
+        <div class="error-message" *ngIf="password?.invalid && password?.touched">
+          <span *ngIf="password?.errors?.['required']">La contraseña es requerida</span>
+        </div>
+      </div>
+
+      <!--div class="form-options">
+        <label class="checkbox-container">
+          <input type="checkbox" formControlName="remember">
+          <span class="checkmark"></span>
+          Recordarme
+        </label>
+        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+      </div-->
+
+      <button 
+        type="submit" 
+        [disabled]="loginForm.invalid"
+        class="btn-login"
+      >
+        <span>INGRESAR</span>
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </form>
+
+    <!--div class="login-footer">
+      <p>¿No tienes una cuenta? <a href="#">Regístrate</a></p>
+    </div-->
+  </div>
+</div>
